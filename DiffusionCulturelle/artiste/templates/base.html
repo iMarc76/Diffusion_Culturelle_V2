@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>DiffusionCulturelle</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- jQuery (Nécessaire pour les plugins JavaScript de Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Bootstrap DatePicker JS (Ajoutez le lien vers le fichier JS de Bootstrap DatePicker) -->
+    <script src="{% static 'artiste/bootstrap-datepicker.js' %}"></script>
+    <!-- CSS pour Bootstrap DatePicker (Ajoutez le lien vers le fichier CSS de Bootstrap DatePicker) -->
+    <link href="{% static 'artiste/bootstrap-datepicker.css' %}" rel="stylesheet">
+      <!-- Bootstrap 5 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'artiste/styles.css' %}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
+</head>
+
+<body class="banner">
+<!-- header -->
+<nav class="navbar sticky-top navbar-expand-lg bg-dark navbar-dark mb-5">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="home"><img class="img-fluid" src="{% static 'artiste/logo-diffusion-culturelle.png' %}"/></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse mt-1" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/spectacle">Artistes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/infos-spectacles">Programmateurs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="/register">Login / Exit
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-8">
+
+          {% block content %}
+
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+    <script src="{% static 'artiste/script.js' %}"></script>
+</body>
+</html>
+

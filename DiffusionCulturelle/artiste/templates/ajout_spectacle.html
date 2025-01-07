@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<form action="" method="POST" enctype="multipart/form-data" class="form-group">
+{% csrf_token %}
+    <div class="row justify-content-center">
+            <div class="col-md-6">
+
+                 {% if msg %}
+                <div class="alert alert-success" role="alert">
+                    {{msg}}
+                </div>
+                {% else %}
+                <!-- Etape 1 -->
+                <div id="step1">
+                    <h2 class="text-center">Personne de contact</h2>
+                {% for field in form_art %}
+
+                <div class="mb-3 form-group">
+                    {% if field.name != 'email' %}
+                    {{ field }}
+                   {% endif %}
+
+                </div>
+                {% endfor %}
+
+
+
+                    <div class="mb-3 form-group">
+                  <div class="input-group has-validation">
+                      <span class="input-group-text" id="inputGroupPrepend">@</span>
+                      {{ form_art.email }}
+                    <div class="invalid-feedback">
+                            Veuillez saisir un E-mail
+                    </div>
+                  </div>
+                </div>
+                </div>
+                <!-- Etape 2 -->
+                <div id="step2" class="d-none">
+                    <h2 class="text-center">Spectacle</h2>
+                {% for field in form_spec %}
+                    {% if field.name != 'animation' %}
+                        <div class="mb-3 form-group">
+                            {{ field }}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+
+                <div class="mb-3 form-group">
+                {{ form_spec.animation.label_tag }}
+                {% for radio in form_spec.animation %}
+                    {{ radio }}
+                {% endfor %}
+                </div>
+                </div>
+                <!-- Etape 3 -->
+                <div id="step3" class="d-none">
+                    <h2 class="text-center">Lieu</h2>
+                     {% for field in form_lieu %}
+
+                        <div class="mb-3 form-group">
+                            {{ field }}
+                        </div>
+
+                {% endfor %}
+
+
+                </div>
+                <div class="d-grid">
+                    <button type="button" class="btn btn-secondary mb-3" id="prevBtn">Précédent</button>
+                     <button type="button" class="btn btn-warning" id="nextBtn">Suivant</button>
+                    <button type="submit" class="btn btn-warning d-none" id="submitBtn">Envoyer</button>
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+
+</form>
+
+
+{% endblock %}
+

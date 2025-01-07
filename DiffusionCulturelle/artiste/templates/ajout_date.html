@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<form action="" method="POST" enctype="multipart/form-data" class="form-group">
+{% csrf_token %}
+
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+        <h2>Ajouter une date</h2>
+          <div class="list-group">
+
+                  <div class="mb-3 form-group">
+
+                        <select id="spectacle_id" class="form-select" name="spectacle_id">
+                            {% for spectacle in spectaclesByUser %}
+                            <option value="{{ spectacle.id }}">{{ spectacle.titre }}</option>
+
+                            {% endfor %}</select>
+                  </div>
+
+
+    </div>
+
+                <div class="input-group date" id="datepicker-group">
+                    {{ form_date.date }}
+                     <span class="input-group-append">
+                <span class="input-group-text" style="border-top-left-radius: 0;
+    border-bottom-left-radius: 0;"><i class="fa fa-calendar" style="font-size:24px;" ></i></span>
+                </span>
+                </div>
+
+
+          <div class="col-md-auto">
+                <div class="m-3 form-group">
+                    <button type="submit" class="btn btn-warning" id="submitBtn">Ajouter</button>
+                </div>
+
+
+            </div>
+
+
+
+    </div>
+</form>
+
+
+
+
+<script>
+    $(document).ready(function(){
+        $('#datepicker-group .form-control').datepicker({
+            format: 'yyyy-mm-dd' // Format de date
+        });
+        $("#datepicker-group .input-group-text").click(function(){
+            $('#datepicker-group .form-control').datepicker('show');
+        });
+    });
+</script>
+
+
+{% endblock %}
+

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+ <h2>Liste des spectacles</h2>
+<div class="list-group">
+   {% for spectacle in spectacles %}
+  <button type="button" class="list-group-item list-group-item-action" aria-current="False">
+    <strong>{{ spectacle.titre }}</strong> par {{ spectacle.artiste.nom }}
+  </button>
+{% endfor %}
+ <!-- <button type="button" class="list-group-item list-group-item-action" disabled>A disabled button item</button>-->
+</div>
+
+
+
+
+{% endblock %}

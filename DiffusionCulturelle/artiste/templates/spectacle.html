@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<form action="" method="POST" class="form-group">
+{% csrf_token %}
+    <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2 class="text-center">Veuillez compléter le formulaire</h2>
+                 {% if msg %}
+                <div class="alert alert-success" role="alert">
+                    {{msg}}
+                </div>
+                {% else %}
+                {% if form.errors %}
+                <div class="alert alert-danger" role="alert">
+                    <strong>Des erreurs ont été détectées dans votre formulaire :</strong>
+                    {{ form.errors }}
+                </div>
+                {% endif %}
+
+                {% for field in form %}
+                <div class="mb-3 form-group">
+                    {{ field }}
+                    {% if field.help_text %}
+                        <small class="form-text text-muted">{{ field.help_text }}</small>
+                    {% endif %}
+                    {% for error in field.errors %}
+                        <div class="alert alert-danger">{{ error }}</div>
+                    {% endfor %}
+                </div>
+    {% endfor %}
+
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+
+</form>
+
+
+{% endblock %}
+
